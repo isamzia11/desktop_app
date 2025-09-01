@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:desktop_app/resources/components/round_button.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -40,7 +41,7 @@ class LoginScreen extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 25.0,
-                              vertical: 20.0,
+                              vertical: 10.0,
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -117,7 +118,7 @@ class LoginScreen extends StatelessWidget {
                                   'Forgot Password?',
                                   style: TextStyle(color: Color(0xFF11DCE8)),
                                 ),
-                                SizedBox(height: 5),
+                                SizedBox(height: 15),
                                 Container(
                                   width: 300,
                                   height: 50,
@@ -161,6 +162,70 @@ class LoginScreen extends StatelessWidget {
                                       ),
                                     ),
                                   ),
+                                ),
+                                SizedBox(height: 5),
+
+                                Row(
+                                  children: [
+                                    const Expanded(
+                                      child: Divider(
+                                        color: Colors.white,
+                                        thickness: 1,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 10.0,
+                                      ),
+                                      child: Text(
+                                        'Or sign up with',
+                                        style: TextStyle(
+                                          color: Colors.white.withOpacity(0.8),
+                                        ),
+                                      ),
+                                    ),
+                                    const Expanded(
+                                      child: Divider(
+                                        color: Colors.white,
+                                        thickness: 1,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 5),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    RoundButton(
+                                      imagePath: 'assets/twitter.png',
+                                    ),
+                                    SizedBox(width: 5),
+                                    RoundButton(
+                                      imagePath: 'assets/facebook.png',
+                                    ),
+                                    SizedBox(width: 5),
+                                    RoundButton(imagePath: 'assets/google.png'),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Don't have an account?",
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                    SizedBox(width: 5),
+                                    Text(
+                                      'Signup',
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: Color(0xFF11DCE8),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
