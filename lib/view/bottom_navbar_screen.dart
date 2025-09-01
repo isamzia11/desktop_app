@@ -1,5 +1,7 @@
 import 'dart:ui';
+import 'package:desktop_app/view/favourites_screen.dart';
 import 'package:desktop_app/view/home_screen.dart';
+import 'package:desktop_app/view/more_screen.dart';
 import 'package:desktop_app/view_models/nav_bar_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,10 +16,8 @@ class BottomNavbarScreen extends StatefulWidget {
 class _BottomNavbarScreenState extends State<BottomNavbarScreen> {
   final List<Widget> _screens = [
     HomeScreen(),
-    // SearchScreen(),
-    // SavedScreen(),
-    // HistoryScreen(),
-    // NotificationScreen(),
+    FavouritesScreen(),
+    MoreScreen(),
   ];
 
   @override
