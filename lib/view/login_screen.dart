@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -17,21 +18,153 @@ class LoginScreen extends StatelessWidget {
         ),
         child: Column(
           children: [
-            // Expanded widget makes the Stack take up the available space
             Expanded(
               child: Stack(
                 children: [
                   Positioned(
                     bottom: 0,
-                    left: 0, // It's good practice to set all four bounds
+                    left: 0,
                     right: 0,
-                    child: Container(
-                      height: 300,
-                      decoration: BoxDecoration(
-                        color: Colors.white24.withOpacity(0.1),
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(15),
-                          topRight: Radius.circular(15),
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(30),
+                        topRight: Radius.circular(30),
+                      ),
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                        child: Container(
+                          height: 400,
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.1),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 25.0,
+                              vertical: 20.0,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Sign in',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 28,
+                                  ),
+                                ),
+                                const SizedBox(height: 30),
+                                // Email Text Field
+                                TextField(
+                                  style: const TextStyle(color: Colors.white),
+                                  decoration: InputDecoration(
+                                    hintText: 'Email',
+
+                                    hintStyle: TextStyle(
+                                      color: Colors.white.withOpacity(0.6),
+                                    ),
+                                    filled: true,
+                                    fillColor: Colors.white.withOpacity(0.2),
+                                    border: InputBorder.none,
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(50),
+                                      borderSide: const BorderSide(
+                                        color: Colors.white,
+                                        width: 2,
+                                      ),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(50),
+                                      borderSide: const BorderSide(
+                                        color: Colors.white,
+                                        width: 2,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 20),
+                                // Password Text Field
+                                TextField(
+                                  obscureText: true,
+                                  style: const TextStyle(color: Colors.white),
+                                  decoration: InputDecoration(
+                                    hintText: 'Password',
+                                    hintStyle: TextStyle(
+                                      color: Colors.white.withOpacity(0.6),
+                                    ),
+                                    filled: true,
+                                    fillColor: Colors.white.withOpacity(0.2),
+                                    border: InputBorder.none,
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(50),
+                                      borderSide: const BorderSide(
+                                        color: Colors.white,
+                                        width: 2,
+                                      ),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(50),
+                                      borderSide: const BorderSide(
+                                        color: Colors.white,
+                                        width: 2,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 5),
+                                Text(
+                                  'Forgot Password?',
+                                  style: TextStyle(color: Color(0xFF11DCE8)),
+                                ),
+                                SizedBox(height: 5),
+                                Container(
+                                  width: 300,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                    gradient: const LinearGradient(
+                                      colors: [
+                                        Color(0xFFE961FF),
+                                        Color(0xFF72A5F2),
+                                        Color(0xFF00E5E5),
+                                      ],
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.white.withOpacity(
+                                          0.2,
+                                        ), // Light shadow is now on the bottom-right
+                                        offset: const Offset(4, 4),
+                                        blurRadius: 10,
+                                        spreadRadius: 2,
+                                      ),
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(
+                                          0.5,
+                                        ), // Darker shadow is now on the top-left
+                                        offset: const Offset(-4, -4),
+                                        blurRadius: 10,
+                                        spreadRadius: 2,
+                                      ),
+                                    ],
+                                  ),
+                                  child: const Center(
+                                    child: Text(
+                                      'Sign in',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                     ),
