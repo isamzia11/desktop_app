@@ -1,8 +1,33 @@
+import 'dart:async';
 import 'dart:ui';
+import 'package:desktop_app/view/login_screen.dart';
 import 'package:flutter/material.dart';
 
-class Onboarding extends StatelessWidget {
+// First, create the Onboarding screen as a StatefulWidget
+// so it can manage its own state (the timer).
+class Onboarding extends StatefulWidget {
   const Onboarding({super.key});
+
+  @override
+  State<Onboarding> createState() => _OnboardingState();
+}
+
+class _OnboardingState extends State<Onboarding> {
+  @override
+  void initState() {
+    super.initState();
+    // Start a timer that navigates after 5 seconds
+    Timer(const Duration(seconds: 5), () {
+      // Use Navigator.of(context) to push a new page
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder:
+              (context) =>
+                  const LoginScreen(), // The login page you want to go to
+        ),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +44,22 @@ class Onboarding extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Static Glowing Arc (now white with a white shadow)
             SizedBox(
-              width: 100,
-              height: 100,
-              child: CustomPaint(painter: StaticArcPainter()),
+              width: 200,
+              height: 200,
+              child: CustomPaint(
+                painter: StaticArcPainter(),
+                child: Center(
+                  child: SizedBox(
+                    width: 150, // Updated width and height to match the image
+                    height: 150,
+                    child: Image.asset(
+                      'assets/logo (1).png',
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+              ),
             ),
           ],
         ),
@@ -41,36 +77,25 @@ class StaticArcPainter extends CustomPainter {
       radius: size.width / 2,
     );
 
-    // Paint for the main white arc
     final whiteArcPaint =
         Paint()
           ..strokeCap = StrokeCap.round
           ..style = PaintingStyle.stroke
           ..strokeWidth = 8.0
-          ..color = Colors.white; // Solid white color
+          ..color = Colors.white;
 
-    // Paint for the glowing shadow effect
     final glowPaint =
         Paint()
-          ..color = Colors.white.withOpacity(
-            0.5,
-          ) // Semi-transparent white for the glow
-          ..maskFilter = MaskFilter.blur(
-            BlurStyle.outer,
-            8.0,
-          ) // Outer blur for glow effect
+          ..color = Colors.white.withOpacity(0.5)
+          ..maskFilter = MaskFilter.blur(BlurStyle.outer, 8.0)
           ..strokeCap = StrokeCap.round
           ..style = PaintingStyle.stroke
-          ..strokeWidth =
-              10.0; // Slightly thicker for the glow to spread beyond the arc
+          ..strokeWidth = 10.0;
 
-    // To create a semi-circle, we'll draw a full arc and leave a gap.
-    const double startAngle = 0.5 * 3.14159; // Starts at the bottom
-    const double sweepAngle = 1.5 * 3.14159; // Sweeps 270 degrees
+    const double startAngle = -0.5 * 3.14159;
+    const double sweepAngle = 1.5 * 3.14159;
 
-    // First, draw the glow layer (slightly thicker and blurred)
     canvas.drawArc(rect, startAngle, sweepAngle, false, glowPaint);
-    // Then, draw the solid white arc on top
     canvas.drawArc(rect, startAngle, sweepAngle, false, whiteArcPaint);
   }
 
