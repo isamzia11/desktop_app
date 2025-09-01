@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:desktop_app/navigation/routes/routes_name.dart';
 import 'package:desktop_app/resources/components/round_button.dart';
 import 'package:flutter/material.dart';
 
@@ -119,46 +120,54 @@ class LoginScreen extends StatelessWidget {
                                   style: TextStyle(color: Color(0xFF11DCE8)),
                                 ),
                                 SizedBox(height: 15),
-                                Container(
-                                  width: 300,
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(50),
-                                    gradient: const LinearGradient(
-                                      colors: [
-                                        Color(0xFFE961FF),
-                                        Color(0xFF72A5F2),
-                                        Color(0xFF00E5E5),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                      context,
+                                      RoutesName.bottom_nav_bar_screen,
+                                    );
+                                  },
+                                  child: Container(
+                                    width: 300,
+                                    height: 50,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(50),
+                                      gradient: const LinearGradient(
+                                        colors: [
+                                          Color(0xFFE961FF),
+                                          Color(0xFF72A5F2),
+                                          Color(0xFF00E5E5),
+                                        ],
+                                        begin: Alignment.topLeft,
+                                        end: Alignment.bottomRight,
+                                      ),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.white.withOpacity(
+                                            0.2,
+                                          ), // Light shadow is now on the bottom-right
+                                          offset: const Offset(4, 4),
+                                          blurRadius: 10,
+                                          spreadRadius: 2,
+                                        ),
+                                        BoxShadow(
+                                          color: Colors.black.withOpacity(
+                                            0.5,
+                                          ), // Darker shadow is now on the top-left
+                                          offset: const Offset(-4, -4),
+                                          blurRadius: 10,
+                                          spreadRadius: 2,
+                                        ),
                                       ],
-                                      begin: Alignment.topLeft,
-                                      end: Alignment.bottomRight,
                                     ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.white.withOpacity(
-                                          0.2,
-                                        ), // Light shadow is now on the bottom-right
-                                        offset: const Offset(4, 4),
-                                        blurRadius: 10,
-                                        spreadRadius: 2,
-                                      ),
-                                      BoxShadow(
-                                        color: Colors.black.withOpacity(
-                                          0.5,
-                                        ), // Darker shadow is now on the top-left
-                                        offset: const Offset(-4, -4),
-                                        blurRadius: 10,
-                                        spreadRadius: 2,
-                                      ),
-                                    ],
-                                  ),
-                                  child: const Center(
-                                    child: Text(
-                                      'Sign in',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
+                                    child: const Center(
+                                      child: Text(
+                                        'Sign in',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ),
                                   ),
